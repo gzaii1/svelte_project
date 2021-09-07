@@ -9,6 +9,7 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import config from 'sapper/config/rollup.js';
+import { less } from 'svelte-preprocess-less';
 import pkg from './package.json';
 
 const mode = process.env.NODE_ENV;
@@ -34,7 +35,13 @@ export default {
 				},
 			}),
 			svelte({
-				preprocess: sveltePreprocess({ sourceMap: dev }),
+				preprocess: sveltePreprocess({ 
+					sourceMap: dev,
+					postcss: {
+						plugins: [require('autoprefixer')()],
+					},
+					less: less(),
+				}),
 				compilerOptions: {
 					dev,
 					hydratable: true

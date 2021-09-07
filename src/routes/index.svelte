@@ -2,7 +2,7 @@
 	import successkid from 'images/successkid.jpg';
 </script>
 
-<style>
+<style lang="less">
 	h1, figure, p {
 		text-align: center;
 		margin: 0 auto;
